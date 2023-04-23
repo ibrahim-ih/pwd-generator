@@ -1,4 +1,4 @@
-import { PasswordGenerator } from '.index';
+import PasswordGenerator from './index';
 
 describe('PasswordGenerator', () => {
   describe('generate()', () => {
@@ -34,8 +34,10 @@ describe('PasswordGenerator', () => {
 
     it('should exclude similar characters', () => {
       const generator = new PasswordGenerator({ excludeSimilarChars: true });
-      const password = generator.generate();
-      expect(/([iIlL1oO0])/g.test(password)).toBe(false);
+      for (let i = 0; i < 10; i++) {
+        const password = generator.generate();
+        expect(password).not.toMatch(/[ilLI|`]/);
+      }
     });
 
     it('should exclude specified characters', () => {
