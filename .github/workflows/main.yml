@@ -12,15 +12,13 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: '16.x'
-    - name: Authenticate with NPM
-      run: npm adduser
-      env:
-        NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
     - name: Install dependencies
       run: npm install
     - name: Run tests, lint, and format code
       run: npm run test && npm run prettier-format && npm run lint
     - name: Publish to NPM
+      env:
+        NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
       run: |
         npm version patch
         npm publish
