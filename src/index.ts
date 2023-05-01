@@ -20,14 +20,14 @@ class PasswordGenerator {
       useLowercase: options.useLowercase ?? true,
       useUppercase: options.useUppercase ?? true,
       excludeSimilarChars: options.excludeSimilarChars ?? true,
-      excludeChars: options.excludeChars ?? '',
+      excludeChars: options.excludeChars ?? "",
       requireOneCharFromEachPool: options.requireOneCharFromEachPool ?? false,
     };
   }
 
   generate(): string {
     const chars = this.buildCharacterPool();
-    let password = '';
+    let password = "";
     if (this.options.requireOneCharFromEachPool) {
       password += this.getRandomCharFromPool(chars.numbers);
       password += this.getRandomCharFromPool(chars.symbols);
@@ -49,48 +49,48 @@ class PasswordGenerator {
     lowercase: string[];
     uppercase: string[];
   } {
-    let allChars = '';
-    let numbers = '0123456789';
-    let symbols = '!@#$%^&*()_+-=[]{}|;:,.<>?';
-    let lowercase = 'abcdefghijklmnopqrstuvwxyz';
-    let uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let allChars = "";
+    let numbers = "0123456789";
+    let symbols = "!@#$%^&*()_+-=[]{}|;:,.<>?";
+    let lowercase = "abcdefghijklmnopqrstuvwxyz";
+    let uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     if (!this.options.useNumbers) {
-      numbers = '';
+      numbers = "";
     }
     if (!this.options.useSymbols) {
-      symbols = '';
+      symbols = "";
     }
     if (!this.options.useLowercase) {
-      lowercase = '';
+      lowercase = "";
     }
     if (!this.options.useUppercase) {
-      uppercase = '';
+      uppercase = "";
     }
 
     allChars = numbers + symbols + lowercase + uppercase;
 
     if (!allChars) {
-      throw new Error('At least one character pool must be enabled');
+      throw new Error("At least one character pool must be enabled");
     }
 
     if (this.options.excludeChars) {
       allChars = allChars
-        .split('')
+        .split("")
         .filter((char) => !this.options.excludeChars.includes(char))
-        .join('');
+        .join("");
     }
 
     if (this.options.excludeSimilarChars) {
-      allChars = allChars.replace(/[ilLI|`]/g, '');
+      allChars = allChars.replace(/[ilLI|`]/g, "");
     }
 
     return {
-      all: allChars.split(''),
-      numbers: numbers.split(''),
-      symbols: symbols.split(''),
-      lowercase: lowercase.split(''),
-      uppercase: uppercase.split(''),
+      all: allChars.split(""),
+      numbers: numbers.split(""),
+      symbols: symbols.split(""),
+      lowercase: lowercase.split(""),
+      uppercase: uppercase.split(""),
     };
   }
 
