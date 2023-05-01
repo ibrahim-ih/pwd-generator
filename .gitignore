@@ -14,17 +14,13 @@ build/
 *~
 .DS_Store
 
-# Environment variables
-.env
-.env.local
-.env.*.local
-.env.test
-.env.development
-.env.production.local
-
 # Test files
 coverage/
 
 # Dependency lock files
 package-lock.json
 yarn.lock
+pnpm-lock.yaml
+
+# github workflow
+.github/workflows/
