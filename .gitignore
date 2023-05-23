@@ -2,11 +2,6 @@
 node_modules/
 *.log
 
-# Compiled output
-dist/
-build/
-*.tsbuildinfo
-
 # Editor and IDE files
 .vscode/
 .idea/

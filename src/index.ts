@@ -1,25 +1,25 @@
 interface PasswordGeneratorOptions {
-  length: number;
-  useNumbers: boolean;
-  useSymbols: boolean | string;
-  useLowercase: boolean;
-  useUppercase: boolean;
-  excludeSimilarChars: boolean;
-  excludeChars: string;
-  requireOneCharFromEachPool: boolean;
+  length?: number;
+  useNumbers?: boolean;
+  useSymbols?: boolean | string;
+  useLowercase?: boolean;
+  useUppercase?: boolean;
+  excludeSimilarChars?: boolean;
+  excludeChars?: string;
+  requireOneCharFromEachPool?: boolean;
 }
 
 class PasswordGenerator {
   private readonly options: PasswordGeneratorOptions;
 
-  constructor(options: Partial<PasswordGeneratorOptions> = {}) {
+  constructor(options: PasswordGeneratorOptions = {}) {
     this.options = {
       length: options.length ?? 12,
-      useNumbers: options.useNumbers ?? true,
-      useSymbols: options.useSymbols ?? true,
-      useLowercase: options.useLowercase ?? true,
-      useUppercase: options.useUppercase ?? true,
-      excludeSimilarChars: options.excludeSimilarChars ?? true,
+      useNumbers: options.useNumbers ?? false,
+      useSymbols: options.useSymbols ?? false,
+      useLowercase: options.useLowercase ?? false,
+      useUppercase: options.useUppercase ?? false,
+      excludeSimilarChars: options.excludeSimilarChars ?? false,
       excludeChars: options.excludeChars ?? "",
       requireOneCharFromEachPool: options.requireOneCharFromEachPool ?? false,
     };
@@ -28,6 +28,7 @@ class PasswordGenerator {
   generate(): string {
     const chars = this.buildCharacterPool();
     let password = "";
+
     if (this.options.requireOneCharFromEachPool) {
       password += this.getRandomCharFromPool(chars.numbers);
       password += this.getRandomCharFromPool(chars.symbols);
@@ -35,10 +36,11 @@ class PasswordGenerator {
       password += this.getRandomCharFromPool(chars.uppercase);
     }
 
-    for (let i = password.length; i < this.options.length; i++) {
+    for (let i = password.length; i < (this.options?.length ?? 0); i++) {
       const char = chars.all[Math.floor(Math.random() * chars.all.length)];
       password += char;
     }
+
     return password;
   }
 
@@ -55,17 +57,19 @@ class PasswordGenerator {
     let lowercase = "abcdefghijklmnopqrstuvwxyz";
     let uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-    if (!this.options.useNumbers) {
-      numbers = "";
-    }
-    if (!this.options.useSymbols) {
-      symbols = "";
-    }
-    if (!this.options.useLowercase) {
-      lowercase = "";
-    }
-    if (!this.options.useUppercase) {
-      uppercase = "";
+    if (!this.options.requireOneCharFromEachPool) {
+      if (!this.options.useNumbers) {
+        numbers = "";
+      }
+      if (!this.options.useSymbols) {
+        symbols = "";
+      }
+      if (!this.options.useLowercase) {
+        lowercase = "";
+      }
+      if (!this.options.useUppercase) {
+        uppercase = "";
+      }
     }
 
     allChars = numbers + symbols + lowercase + uppercase;
@@ -77,7 +81,7 @@ class PasswordGenerator {
     if (this.options.excludeChars) {
       allChars = allChars
         .split("")
-        .filter((char) => !this.options.excludeChars.includes(char))
+        .filter((char) => !(this.options.excludeChars?.includes(char) ?? false))
         .join("");
     }
 
