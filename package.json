@@ -1,14 +1,14 @@
 {
   "name": "pwd-generator",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A JavaScript library for generating random passwords.",
   "main": "index.js",
   "scripts": {
     "build": "rimraf ./build && tsc",
     "start:dev": "npx nodemon",
     "start": "npm run build && node build/index.js",
-    "lint": "eslint . --ext .ts",
-    "prettier-format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,html,css,md}\" && eslint --fix .",
+    "lint": "eslint . --ext .ts --ignore-pattern build/",
+    "prettier-format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,html,css,md}\"  --ignore-pattern build/ && eslint --fix . --ignore-pattern build/",
     "test": "jest",
     "test:dev": "jest --watchAll"
   },
