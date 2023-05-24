@@ -7,7 +7,7 @@ The PasswordGenerator class is a utility for generating random passwords based o
 You can install the PasswordGenerator package using npm:
 
 ```bash
-  npm install pwd-generator
+  npm install random-pwd-gen
 ```
 
 ## Usage
