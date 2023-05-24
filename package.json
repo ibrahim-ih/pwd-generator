@@ -1,6 +1,6 @@
 {
-  "name": "pwd-generator",
-  "version": "1.0.8",
+  "name": "random-pwd-gen",
+  "version": "1.0.9",
   "description": "A JavaScript library for generating random passwords.",
   "main": "index.js",
   "scripts": {
@@ -20,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ibrahim-ih/pwd-generator.git"
+    "url": "git+https://github.com/ibrahim-ih/random-pwd-gen.git"
   },
   "keywords": [
     "random",
@@ -30,9 +30,9 @@
   "author": "Ibrahim Haouari",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ibrahim-ih/pwd-generator/issues"
+    "url": "https://github.com/ibrahim-ih/random-pwd-gen/issues"
   },
-  "homepage": "https://github.com/ibrahim-ih/pwd-generator#readme",
+  "homepage": "https://github.com/ibrahim-ih/random-pwd-gen#readme",
   "devDependencies": {
     "@types/jest": "^29.5.1",
     "@typescript-eslint/eslint-plugin": "^5.59.2",
