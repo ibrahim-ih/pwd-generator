@@ -16,10 +16,7 @@ jobs:
       run: npm install
     - name: Run tests, lint, and format code
       run: npm run test && npm run prettier-format && npm run lint
-    - name: Publish to NPM
+    - name: Publish to npm
+      run: npm publish
       env:
-        NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
-      run: |
-        npm version patch
-        npm publish
-      if: success()
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}

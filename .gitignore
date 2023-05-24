@@ -1,18 +1,18 @@
-# Node.js files
+# Dependency directories
 node_modules/
-*.log
+dist/
+build/
 
-# Editor and IDE files
+# TypeScript specific
+*.tsbuildinfo
+
+# Editor/IDE specific
 .vscode/
 .idea/
-*.swp
-*~
-.DS_Store
 
-# Test files
+# Testing specific
 coverage/
 
-# Dependency lock files
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
+# OS specific
+.DS_Store
+Thumbs.db

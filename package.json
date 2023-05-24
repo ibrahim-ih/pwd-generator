@@ -1,6 +1,6 @@
 {
   "name": "pwd-generator",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A JavaScript library for generating random passwords.",
   "main": "index.js",
   "scripts": {
